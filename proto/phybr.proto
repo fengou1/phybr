@@ -1,0 +1,27 @@
+syntax = "proto3";
+package phybr;
+
+import "gogoproto/gogo.proto";
+import "rustproto.proto";
+
+option (gogoproto.sizer_all) = true;
+option (gogoproto.marshaler_all) = true;
+option (gogoproto.unmarshaler_all) = true;
+option (rustproto.lite_runtime_all) = true;
+
+message RegionMeta {
+    uint64 region_id = 1;
+    uint64 applied_index = 2;
+    uint64 term = 3;
+}
+
+message RegionRecover {
+    uint64 region_id = 1;
+    uint64 term = 2; // 将副本 term 设置为给定值
+    bool silence = 3; // 这个副本是否可以发起选举
+    bool tombstone = 4; // 将这个副本设置为 tombstone
+}
+
+service Phybr {
+    rpc recover_regions(stream RegionMeta) returns (stream RegionRecover) {}
+}
