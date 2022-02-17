@@ -14,6 +14,9 @@ message RegionMeta {
     uint64 applied_index = 2;
     uint64 term = 3;
     uint64 version = 4;
+    bool tombstone = 5;
+    bytes start_key = 6;
+    bytes end_key = 7;
 }
 
 message RegionRecover {
