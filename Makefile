@@ -6,3 +6,8 @@ go: check
 	$(CURDIR)/scripts/generate_go.sh
 	GO111MODULE=on go mod tidy
 	GO111MODULE=on go build ./pkg/...
+
+build: main.go
+	go build
+
+.DEFAULT_GOAL := build
