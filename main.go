@@ -56,6 +56,10 @@ func (x X) RecoverRegions(stream pb.Phybr_RecoverRegionsServer) (err error) {
 	x.received.Done()
 
 	x.generated.Wait()
+	if err = stream.SendHeader(nil); err != nil {
+		fmt.Errorf("send fail: %v\n", err)
+		return err
+	}
 	for _, command := range x.regionRecovers[offset] {
 		if err = stream.Send(command); err != nil {
 			fmt.Errorf("send fail: %v\n", err)
@@ -95,6 +99,7 @@ func main() {
 	x.generated.Done()
 
 	x.finished.Wait()
+	time.Sleep(time.Second * 3) // Sleep to wait grpc streams get closed.
 	fmt.Printf("stopping...")
 	s.Stop()
 }
