@@ -73,7 +73,7 @@ func (x X) RecoverRegions(stream pb.Phybr_RecoverRegionsServer) (err error) {
 
 func main() {
 	address := "127.0.0.1:3379"
-	var x = newX(4)
+	var x = newX(3)
 
 	listener, err := net.Listen("tcp", address)
 	if err != nil {
