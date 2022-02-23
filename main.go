@@ -154,12 +154,18 @@ func selectReplicas(regionMetas [][]*pb.RegionMeta, commands [][]*pb.RegionRecov
 	// After resolved, all reserved regions shouldn't be tombstone.
 	var reserved = make(map[uint64]struct{}, 0)
 	iter := topo.Iterator()
+	prevEndKey := prefixStartKey([]byte{})
 	for iter.Next() {
 		v := iter.Value().(T)
 		if regions[v.r][0].Tombstone {
 			fmt.Printf("reserved region shouldn't be tombstone: %d\n", v.r)
 			panic("reserved region shouldn't be tombstone")
 		}
+		if !keyEq(prevEndKey, v.k) {
+			fmt.Printf("prev region end key doesn't equal to curr region start key\n")
+			panic("prev region end key doesn't equal to curr region start key")
+		}
+		prevEndKey = prefixEndKey(regions[v.r][0].EndKey)
 		reserved[v.r] = struct{}{}
 	}
 
