@@ -10,10 +10,9 @@ import (
 	"time"
 
 	"github.com/emirpasic/gods/maps/treemap"
+	pb "github.com/hicqu/phybr/pkg/phybr"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/keepalive"
-
-	pb "github.com/hicqu/phybr/pkg/phybr"
 )
 
 type X struct {
@@ -145,27 +144,35 @@ func selectReplicas(regionMetas [][]*pb.RegionMeta, commands [][]*pb.RegionRecov
 	for _, p := range versions {
 		var sk = prefixStartKey(regions[p.r][0].StartKey)
 		var ek = prefixEndKey(regions[p.r][0].EndKey)
-		fk, fv := topo.Floor(sk)
-		if fk == nil || keyEq(fk.([]byte), sk) || keyCmp(fv.(T).k, ek) > 0 {
-			topo.Put(ek, T{sk, p.r})
+		var fk, fv interface{}
+		fk, _ = topo.Ceiling(sk)
+		if fk != nil && (keyEq(fk.([]byte), sk) || keyCmp(fk.([]byte), ek) < 0) {
+			continue
 		}
+		fk, fv = topo.Floor(sk)
+		if fk != nil && keyCmp(fv.(T).k, sk) > 0 {
+			continue
+		}
+		topo.Put(sk, T{ek, p.r})
 	}
 
 	// After resolved, all reserved regions shouldn't be tombstone.
 	var reserved = make(map[uint64]struct{}, 0)
-	iter := topo.Iterator()
-	prevEndKey := prefixStartKey([]byte{})
+	var iter = topo.Iterator()
+	var prevEndKey = prefixStartKey([]byte{})
+	var prevR uint64 = 0
 	for iter.Next() {
 		v := iter.Value().(T)
 		if regions[v.r][0].Tombstone {
 			fmt.Printf("reserved region shouldn't be tombstone: %d\n", v.r)
 			panic("reserved region shouldn't be tombstone")
 		}
-		if !keyEq(prevEndKey, v.k) {
-			fmt.Printf("prev region end key doesn't equal to curr region start key\n")
-			panic("prev region end key doesn't equal to curr region start key")
+		if !keyEq(prevEndKey, iter.Key().([]byte)) {
+			fmt.Printf("region %d doesn't conject to region %d\n", prevR, v.r)
+			panic("regions should conject to each other")
 		}
-		prevEndKey = prefixEndKey(regions[v.r][0].EndKey)
+		prevEndKey = v.k
+		prevR = v.r
 		reserved[v.r] = struct{}{}
 	}
 
