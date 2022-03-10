@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"fmt"
 	"io"
 	"net"
@@ -23,6 +24,7 @@ type X struct {
 	finished       *sync.WaitGroup // Whether all commands are sent out or not.
 	regionMetas    [][]*pb.RegionMeta
 	regionRecovers [][]*pb.RegionRecover
+	resolved_ts    *uint64
 }
 
 func newX(instances int) X {
@@ -35,7 +37,8 @@ func newX(instances int) X {
 	finished.Add(instances)
 	var regionMetas = make([][]*pb.RegionMeta, instances)
 	var regionRecovers = make([][]*pb.RegionRecover, instances)
-	return X{instances, offset, received, generated, finished, regionMetas, regionRecovers}
+	var resolved_ts = new(uint64)
+	return X{instances, offset, received, generated, finished, regionMetas, regionRecovers, resolved_ts}
 }
 
 func (x X) RecoverRegions(stream pb.Phybr_RecoverRegionsServer) (err error) {
@@ -68,6 +71,14 @@ func (x X) RecoverRegions(stream pb.Phybr_RecoverRegionsServer) (err error) {
 	fmt.Printf("all commands are sent to instance %d\n", offset)
 	x.finished.Done()
 	return
+}
+
+func (x X) Close(ctx context.Context, in *pb.CloseRequest) (*pb.CloseReply, error) {
+	return &pb.CloseReply{Ok: "Close"}, nil
+}
+
+func (x X) Resolve(ctx context.Context, in *pb.ResolvedRequest) (*pb.ResolvedReply, error) {
+	return &pb.ResolvedReply{ResolvedTs: 542462374256426}, nil
 }
 
 func main() {

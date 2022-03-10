@@ -45,7 +45,7 @@ func (m *RegionMeta) Reset()         { *m = RegionMeta{} }
 func (m *RegionMeta) String() string { return proto.CompactTextString(m) }
 func (*RegionMeta) ProtoMessage()    {}
 func (*RegionMeta) Descriptor() ([]byte, []int) {
-	return fileDescriptor_phybr_198c6fcfae9a394c, []int{0}
+	return fileDescriptor_phybr_8b825b079afd19f3, []int{0}
 }
 func (m *RegionMeta) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -137,7 +137,7 @@ func (m *RegionRecover) Reset()         { *m = RegionRecover{} }
 func (m *RegionRecover) String() string { return proto.CompactTextString(m) }
 func (*RegionRecover) ProtoMessage()    {}
 func (*RegionRecover) Descriptor() ([]byte, []int) {
-	return fileDescriptor_phybr_198c6fcfae9a394c, []int{1}
+	return fileDescriptor_phybr_8b825b079afd19f3, []int{1}
 }
 func (m *RegionRecover) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -194,9 +194,201 @@ func (m *RegionRecover) GetTombstone() bool {
 	return false
 }
 
+type CloseRequest struct {
+	Workdone             bool     `protobuf:"varint,1,opt,name=workdone,proto3" json:"workdone,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *CloseRequest) Reset()         { *m = CloseRequest{} }
+func (m *CloseRequest) String() string { return proto.CompactTextString(m) }
+func (*CloseRequest) ProtoMessage()    {}
+func (*CloseRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_phybr_8b825b079afd19f3, []int{2}
+}
+func (m *CloseRequest) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *CloseRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_CloseRequest.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *CloseRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CloseRequest.Merge(dst, src)
+}
+func (m *CloseRequest) XXX_Size() int {
+	return m.Size()
+}
+func (m *CloseRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_CloseRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CloseRequest proto.InternalMessageInfo
+
+func (m *CloseRequest) GetWorkdone() bool {
+	if m != nil {
+		return m.Workdone
+	}
+	return false
+}
+
+type CloseReply struct {
+	Ok                   string   `protobuf:"bytes,1,opt,name=ok,proto3" json:"ok,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *CloseReply) Reset()         { *m = CloseReply{} }
+func (m *CloseReply) String() string { return proto.CompactTextString(m) }
+func (*CloseReply) ProtoMessage()    {}
+func (*CloseReply) Descriptor() ([]byte, []int) {
+	return fileDescriptor_phybr_8b825b079afd19f3, []int{3}
+}
+func (m *CloseReply) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *CloseReply) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_CloseReply.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *CloseReply) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CloseReply.Merge(dst, src)
+}
+func (m *CloseReply) XXX_Size() int {
+	return m.Size()
+}
+func (m *CloseReply) XXX_DiscardUnknown() {
+	xxx_messageInfo_CloseReply.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CloseReply proto.InternalMessageInfo
+
+func (m *CloseReply) GetOk() string {
+	if m != nil {
+		return m.Ok
+	}
+	return ""
+}
+
+type ResolvedRequest struct {
+	Start                uint64   `protobuf:"varint,1,opt,name=start,proto3" json:"start,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *ResolvedRequest) Reset()         { *m = ResolvedRequest{} }
+func (m *ResolvedRequest) String() string { return proto.CompactTextString(m) }
+func (*ResolvedRequest) ProtoMessage()    {}
+func (*ResolvedRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_phybr_8b825b079afd19f3, []int{4}
+}
+func (m *ResolvedRequest) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *ResolvedRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_ResolvedRequest.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *ResolvedRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ResolvedRequest.Merge(dst, src)
+}
+func (m *ResolvedRequest) XXX_Size() int {
+	return m.Size()
+}
+func (m *ResolvedRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_ResolvedRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ResolvedRequest proto.InternalMessageInfo
+
+func (m *ResolvedRequest) GetStart() uint64 {
+	if m != nil {
+		return m.Start
+	}
+	return 0
+}
+
+type ResolvedReply struct {
+	ResolvedTs           uint64   `protobuf:"varint,1,opt,name=resolved_ts,json=resolvedTs,proto3" json:"resolved_ts,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *ResolvedReply) Reset()         { *m = ResolvedReply{} }
+func (m *ResolvedReply) String() string { return proto.CompactTextString(m) }
+func (*ResolvedReply) ProtoMessage()    {}
+func (*ResolvedReply) Descriptor() ([]byte, []int) {
+	return fileDescriptor_phybr_8b825b079afd19f3, []int{5}
+}
+func (m *ResolvedReply) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *ResolvedReply) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_ResolvedReply.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *ResolvedReply) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ResolvedReply.Merge(dst, src)
+}
+func (m *ResolvedReply) XXX_Size() int {
+	return m.Size()
+}
+func (m *ResolvedReply) XXX_DiscardUnknown() {
+	xxx_messageInfo_ResolvedReply.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ResolvedReply proto.InternalMessageInfo
+
+func (m *ResolvedReply) GetResolvedTs() uint64 {
+	if m != nil {
+		return m.ResolvedTs
+	}
+	return 0
+}
+
 func init() {
 	proto.RegisterType((*RegionMeta)(nil), "phybr.RegionMeta")
 	proto.RegisterType((*RegionRecover)(nil), "phybr.RegionRecover")
+	proto.RegisterType((*CloseRequest)(nil), "phybr.CloseRequest")
+	proto.RegisterType((*CloseReply)(nil), "phybr.CloseReply")
+	proto.RegisterType((*ResolvedRequest)(nil), "phybr.ResolvedRequest")
+	proto.RegisterType((*ResolvedReply)(nil), "phybr.ResolvedReply")
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -211,6 +403,8 @@ const _ = grpc.SupportPackageIsVersion4
 
 type PhybrClient interface {
 	RecoverRegions(ctx context.Context, opts ...grpc.CallOption) (Phybr_RecoverRegionsClient, error)
+	Close(ctx context.Context, in *CloseRequest, opts ...grpc.CallOption) (*CloseReply, error)
+	Resolve(ctx context.Context, in *ResolvedRequest, opts ...grpc.CallOption) (*ResolvedReply, error)
 }
 
 type phybrClient struct {
@@ -252,10 +446,30 @@ func (x *phybrRecoverRegionsClient) Recv() (*RegionRecover, error) {
 	return m, nil
 }
 
+func (c *phybrClient) Close(ctx context.Context, in *CloseRequest, opts ...grpc.CallOption) (*CloseReply, error) {
+	out := new(CloseReply)
+	err := c.cc.Invoke(ctx, "/phybr.Phybr/close", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *phybrClient) Resolve(ctx context.Context, in *ResolvedRequest, opts ...grpc.CallOption) (*ResolvedReply, error) {
+	out := new(ResolvedReply)
+	err := c.cc.Invoke(ctx, "/phybr.Phybr/resolve", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // Server API for Phybr service
 
 type PhybrServer interface {
 	RecoverRegions(Phybr_RecoverRegionsServer) error
+	Close(context.Context, *CloseRequest) (*CloseReply, error)
+	Resolve(context.Context, *ResolvedRequest) (*ResolvedReply, error)
 }
 
 func RegisterPhybrServer(s *grpc.Server, srv PhybrServer) {
@@ -288,10 +502,55 @@ func (x *phybrRecoverRegionsServer) Recv() (*RegionMeta, error) {
 	return m, nil
 }
 
+func _Phybr_Close_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CloseRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(PhybrServer).Close(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/phybr.Phybr/Close",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PhybrServer).Close(ctx, req.(*CloseRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Phybr_Resolve_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ResolvedRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(PhybrServer).Resolve(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/phybr.Phybr/Resolve",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PhybrServer).Resolve(ctx, req.(*ResolvedRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _Phybr_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "phybr.Phybr",
 	HandlerType: (*PhybrServer)(nil),
-	Methods:     []grpc.MethodDesc{},
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "close",
+			Handler:    _Phybr_Close_Handler,
+		},
+		{
+			MethodName: "resolve",
+			Handler:    _Phybr_Resolve_Handler,
+		},
+	},
 	Streams: []grpc.StreamDesc{
 		{
 			StreamName:    "recover_regions",
@@ -417,6 +676,116 @@ func (m *RegionRecover) MarshalTo(dAtA []byte) (int, error) {
 	return i, nil
 }
 
+func (m *CloseRequest) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalTo(dAtA)
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *CloseRequest) MarshalTo(dAtA []byte) (int, error) {
+	var i int
+	_ = i
+	var l int
+	_ = l
+	if m.Workdone {
+		dAtA[i] = 0x8
+		i++
+		if m.Workdone {
+			dAtA[i] = 1
+		} else {
+			dAtA[i] = 0
+		}
+		i++
+	}
+	if m.XXX_unrecognized != nil {
+		i += copy(dAtA[i:], m.XXX_unrecognized)
+	}
+	return i, nil
+}
+
+func (m *CloseReply) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalTo(dAtA)
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *CloseReply) MarshalTo(dAtA []byte) (int, error) {
+	var i int
+	_ = i
+	var l int
+	_ = l
+	if len(m.Ok) > 0 {
+		dAtA[i] = 0xa
+		i++
+		i = encodeVarintPhybr(dAtA, i, uint64(len(m.Ok)))
+		i += copy(dAtA[i:], m.Ok)
+	}
+	if m.XXX_unrecognized != nil {
+		i += copy(dAtA[i:], m.XXX_unrecognized)
+	}
+	return i, nil
+}
+
+func (m *ResolvedRequest) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalTo(dAtA)
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *ResolvedRequest) MarshalTo(dAtA []byte) (int, error) {
+	var i int
+	_ = i
+	var l int
+	_ = l
+	if m.Start != 0 {
+		dAtA[i] = 0x8
+		i++
+		i = encodeVarintPhybr(dAtA, i, uint64(m.Start))
+	}
+	if m.XXX_unrecognized != nil {
+		i += copy(dAtA[i:], m.XXX_unrecognized)
+	}
+	return i, nil
+}
+
+func (m *ResolvedReply) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalTo(dAtA)
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *ResolvedReply) MarshalTo(dAtA []byte) (int, error) {
+	var i int
+	_ = i
+	var l int
+	_ = l
+	if m.ResolvedTs != 0 {
+		dAtA[i] = 0x8
+		i++
+		i = encodeVarintPhybr(dAtA, i, uint64(m.ResolvedTs))
+	}
+	if m.XXX_unrecognized != nil {
+		i += copy(dAtA[i:], m.XXX_unrecognized)
+	}
+	return i, nil
+}
+
 func encodeVarintPhybr(dAtA []byte, offset int, v uint64) int {
 	for v >= 1<<7 {
 		dAtA[offset] = uint8(v&0x7f | 0x80)
@@ -472,6 +841,55 @@ func (m *RegionRecover) Size() (n int) {
 	}
 	if m.Tombstone {
 		n += 2
+	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
+	return n
+}
+
+func (m *CloseRequest) Size() (n int) {
+	var l int
+	_ = l
+	if m.Workdone {
+		n += 2
+	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
+	return n
+}
+
+func (m *CloseReply) Size() (n int) {
+	var l int
+	_ = l
+	l = len(m.Ok)
+	if l > 0 {
+		n += 1 + l + sovPhybr(uint64(l))
+	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
+	return n
+}
+
+func (m *ResolvedRequest) Size() (n int) {
+	var l int
+	_ = l
+	if m.Start != 0 {
+		n += 1 + sovPhybr(uint64(m.Start))
+	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
+	return n
+}
+
+func (m *ResolvedReply) Size() (n int) {
+	var l int
+	_ = l
+	if m.ResolvedTs != 0 {
+		n += 1 + sovPhybr(uint64(m.ResolvedTs))
 	}
 	if m.XXX_unrecognized != nil {
 		n += len(m.XXX_unrecognized)
@@ -830,6 +1248,297 @@ func (m *RegionRecover) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
+func (m *CloseRequest) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowPhybr
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= (uint64(b) & 0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: CloseRequest: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: CloseRequest: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Workdone", wireType)
+			}
+			var v int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowPhybr
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				v |= (int(b) & 0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			m.Workdone = bool(v != 0)
+		default:
+			iNdEx = preIndex
+			skippy, err := skipPhybr(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if skippy < 0 {
+				return ErrInvalidLengthPhybr
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *CloseReply) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowPhybr
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= (uint64(b) & 0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: CloseReply: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: CloseReply: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Ok", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowPhybr
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= (uint64(b) & 0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthPhybr
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Ok = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipPhybr(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if skippy < 0 {
+				return ErrInvalidLengthPhybr
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *ResolvedRequest) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowPhybr
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= (uint64(b) & 0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: ResolvedRequest: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: ResolvedRequest: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Start", wireType)
+			}
+			m.Start = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowPhybr
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Start |= (uint64(b) & 0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		default:
+			iNdEx = preIndex
+			skippy, err := skipPhybr(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if skippy < 0 {
+				return ErrInvalidLengthPhybr
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *ResolvedReply) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowPhybr
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= (uint64(b) & 0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: ResolvedReply: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: ResolvedReply: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field ResolvedTs", wireType)
+			}
+			m.ResolvedTs = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowPhybr
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.ResolvedTs |= (uint64(b) & 0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		default:
+			iNdEx = preIndex
+			skippy, err := skipPhybr(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if skippy < 0 {
+				return ErrInvalidLengthPhybr
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
 func skipPhybr(dAtA []byte) (n int, err error) {
 	l := len(dAtA)
 	iNdEx := 0
@@ -935,28 +1644,36 @@ var (
 	ErrIntOverflowPhybr   = fmt.Errorf("proto: integer overflow")
 )
 
-func init() { proto.RegisterFile("phybr.proto", fileDescriptor_phybr_198c6fcfae9a394c) }
+func init() { proto.RegisterFile("phybr.proto", fileDescriptor_phybr_8b825b079afd19f3) }
 
-var fileDescriptor_phybr_198c6fcfae9a394c = []byte{
-	// 318 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x91, 0xc1, 0x6a, 0x32, 0x31,
-	0x14, 0x85, 0x8d, 0xff, 0xa8, 0xe3, 0xfd, 0x15, 0x69, 0x10, 0x1a, 0x6c, 0x19, 0xc4, 0x6e, 0x66,
-	0x65, 0x4b, 0xfb, 0x02, 0xa5, 0x3b, 0x91, 0x42, 0x99, 0x17, 0x18, 0xd4, 0xb9, 0xd8, 0x50, 0x4d,
-	0x86, 0x24, 0x15, 0xe7, 0x4d, 0xfa, 0x08, 0x7d, 0x94, 0x2e, 0x5d, 0x76, 0x59, 0xec, 0x8b, 0x94,
-	0xb9, 0x51, 0x64, 0xba, 0xe8, 0xee, 0x9e, 0xef, 0x04, 0x72, 0xce, 0xbd, 0xf0, 0x3f, 0x7f, 0x2e,
-	0xe6, 0x66, 0x9c, 0x1b, 0xed, 0x34, 0x6f, 0x90, 0x18, 0xf4, 0x97, 0x7a, 0xa9, 0x89, 0x5c, 0x97,
-	0x93, 0x37, 0x07, 0x3d, 0xf3, 0x6a, 0x1d, 0x8d, 0x1e, 0x8c, 0x76, 0x0c, 0x20, 0xc1, 0xa5, 0xd4,
-	0xea, 0x11, 0xdd, 0x8c, 0x5f, 0x40, 0xdb, 0x90, 0x4a, 0x65, 0x26, 0xd8, 0x90, 0xc5, 0x41, 0x12,
-	0x7a, 0x30, 0xc9, 0xf8, 0x15, 0x74, 0x67, 0x79, 0xbe, 0x92, 0x98, 0xa5, 0x52, 0x65, 0xb8, 0x15,
-	0x75, 0x7a, 0xd0, 0x39, 0xc0, 0x49, 0xc9, 0x38, 0x87, 0xc0, 0xa1, 0x59, 0x8b, 0x7f, 0xe4, 0xd1,
-	0xcc, 0x05, 0xb4, 0x36, 0x68, 0xac, 0xd4, 0x4a, 0x04, 0x84, 0x8f, 0x92, 0x5f, 0x42, 0xdb, 0xe9,
-	0xf5, 0xdc, 0x3a, 0xad, 0x50, 0x34, 0x86, 0x2c, 0x0e, 0x93, 0x13, 0x28, 0xd3, 0x58, 0x37, 0x33,
-	0x2e, 0x7d, 0xc1, 0x42, 0x34, 0x87, 0x2c, 0xee, 0x24, 0x21, 0x81, 0x29, 0x16, 0xfc, 0x1c, 0x5a,
-	0xa8, 0x32, 0xb2, 0x5a, 0x64, 0x35, 0x51, 0x65, 0x53, 0x2c, 0x46, 0x5b, 0xe8, 0xfa, 0x46, 0x09,
-	0x2e, 0xf4, 0x06, 0xcd, 0xdf, 0xa5, 0x8e, 0x79, 0xeb, 0xd5, 0xbc, 0x56, 0xae, 0x50, 0x2d, 0x90,
-	0x6a, 0x84, 0xc9, 0x51, 0x56, 0xf3, 0x06, 0xbf, 0xf2, 0xde, 0x4e, 0xa0, 0xf1, 0x54, 0x2e, 0x9f,
-	0xdf, 0x43, 0xcf, 0xf8, 0xcf, 0x53, 0xff, 0x91, 0xe5, 0x67, 0x63, 0x7f, 0xa4, 0xd3, 0xb2, 0x07,
-	0xfd, 0x0a, 0x3a, 0xa4, 0x1d, 0xd5, 0x62, 0x76, 0xc3, 0x1e, 0xfa, 0x9f, 0xef, 0x21, 0xfb, 0xd8,
-	0x47, 0x6c, 0xb7, 0x8f, 0xd8, 0xd7, 0x3e, 0x62, 0x6f, 0xdf, 0x51, 0x6d, 0xde, 0xa4, 0xa3, 0xdd,
-	0xfd, 0x04, 0x00, 0x00, 0xff, 0xff, 0x48, 0x20, 0x9e, 0x3d, 0xf1, 0x01, 0x00, 0x00,
+var fileDescriptor_phybr_8b825b079afd19f3 = []byte{
+	// 442 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x92, 0xc1, 0x6e, 0xd3, 0x40,
+	0x10, 0x86, 0xb3, 0x21, 0x4e, 0x9c, 0x69, 0x4a, 0xd4, 0x21, 0x02, 0xcb, 0x54, 0x21, 0x5a, 0x0e,
+	0x44, 0x1c, 0x4a, 0x81, 0x13, 0x37, 0x04, 0xa7, 0xaa, 0x42, 0x42, 0x2b, 0xee, 0x56, 0x12, 0x8f,
+	0x82, 0x15, 0xd7, 0x6b, 0x76, 0xb7, 0xa1, 0x7e, 0x13, 0x1e, 0x81, 0x37, 0xe0, 0x15, 0x38, 0xf6,
+	0xc8, 0x11, 0x85, 0x17, 0x41, 0x1e, 0xdb, 0x4d, 0xcc, 0x81, 0xdb, 0xfe, 0xdf, 0xfc, 0xda, 0xfd,
+	0xff, 0xd5, 0xc0, 0x51, 0xfe, 0xb9, 0x58, 0x9a, 0xb3, 0xdc, 0x68, 0xa7, 0xd1, 0x63, 0x11, 0x4e,
+	0xd6, 0x7a, 0xad, 0x99, 0xbc, 0x28, 0x4f, 0xd5, 0x30, 0x1c, 0x9b, 0x6b, 0xeb, 0xf8, 0x58, 0x01,
+	0x79, 0x2b, 0x00, 0x14, 0xad, 0x13, 0x9d, 0x7d, 0x20, 0xb7, 0xc0, 0xc7, 0x30, 0x34, 0xac, 0xa2,
+	0x24, 0x0e, 0xc4, 0x4c, 0xcc, 0x7b, 0xca, 0xaf, 0xc0, 0x45, 0x8c, 0x4f, 0xe1, 0x78, 0x91, 0xe7,
+	0x69, 0x42, 0x71, 0x94, 0x64, 0x31, 0xdd, 0x04, 0x5d, 0x36, 0x8c, 0x6a, 0x78, 0x51, 0x32, 0x44,
+	0xe8, 0x39, 0x32, 0x57, 0xc1, 0x3d, 0x9e, 0xf1, 0x19, 0x03, 0x18, 0x6c, 0xc9, 0xd8, 0x44, 0x67,
+	0x41, 0x8f, 0x71, 0x23, 0xf1, 0x14, 0x86, 0x4e, 0x5f, 0x2d, 0xad, 0xd3, 0x19, 0x05, 0xde, 0x4c,
+	0xcc, 0x7d, 0xb5, 0x07, 0x65, 0x1a, 0xeb, 0x16, 0xc6, 0x45, 0x1b, 0x2a, 0x82, 0xfe, 0x4c, 0xcc,
+	0x47, 0xca, 0x67, 0x70, 0x49, 0x05, 0x3e, 0x82, 0x01, 0x65, 0x31, 0x8f, 0x06, 0x3c, 0xea, 0x53,
+	0x16, 0x5f, 0x52, 0x21, 0x6f, 0xe0, 0xb8, 0x6a, 0xa4, 0x68, 0xa5, 0xb7, 0x64, 0xfe, 0x5f, 0xaa,
+	0xc9, 0xdb, 0x6d, 0xe7, 0xb5, 0x49, 0x4a, 0xd9, 0x8a, 0xb8, 0x86, 0xaf, 0x1a, 0xd9, 0xce, 0xdb,
+	0xfb, 0x27, 0xaf, 0x7c, 0x0e, 0xa3, 0xf7, 0xa9, 0xb6, 0xa4, 0xe8, 0xcb, 0x35, 0x59, 0x87, 0x21,
+	0xf8, 0x5f, 0xb5, 0xd9, 0xc4, 0xa5, 0x59, 0xb0, 0xf9, 0x4e, 0xcb, 0x53, 0x80, 0xda, 0x9b, 0xa7,
+	0x05, 0xde, 0x87, 0xae, 0xde, 0xb0, 0x67, 0xa8, 0xba, 0x7a, 0x23, 0x9f, 0xc1, 0x58, 0x91, 0xd5,
+	0xe9, 0x96, 0xe2, 0xe6, 0xb2, 0x09, 0x78, 0xdc, 0xbd, 0x6e, 0x50, 0x09, 0x79, 0x5e, 0x96, 0x6d,
+	0x8c, 0xe5, 0x4d, 0x4f, 0xe0, 0xc8, 0xd4, 0x20, 0x72, 0xb6, 0x36, 0x43, 0x83, 0x3e, 0xd9, 0x57,
+	0x3f, 0x04, 0x78, 0x1f, 0xcb, 0x15, 0xc1, 0xb7, 0x30, 0x36, 0xd5, 0x17, 0x45, 0xd5, 0x77, 0x58,
+	0x3c, 0x39, 0xab, 0x56, 0x69, 0xbf, 0x12, 0xe1, 0xa4, 0x85, 0xea, 0x3f, 0x95, 0x9d, 0xb9, 0x38,
+	0x17, 0xf8, 0x12, 0xbc, 0x55, 0x59, 0x02, 0x1f, 0xd4, 0xa6, 0xc3, 0xfa, 0xe1, 0x49, 0x1b, 0xe6,
+	0x69, 0x21, 0x3b, 0xf8, 0x06, 0x06, 0x75, 0x18, 0x7c, 0x78, 0x77, 0x73, 0xab, 0xe9, 0xc1, 0x8b,
+	0x07, 0xc5, 0x64, 0xe7, 0xdd, 0xe4, 0xd7, 0x77, 0x5f, 0xfc, 0xdc, 0x4d, 0xc5, 0xed, 0x6e, 0x2a,
+	0x7e, 0xef, 0xa6, 0xe2, 0xdb, 0x9f, 0x69, 0x67, 0xd9, 0xe7, 0x45, 0x7e, 0xfd, 0x37, 0x00, 0x00,
+	0xff, 0xff, 0x37, 0x45, 0x87, 0xd8, 0x05, 0x03, 0x00, 0x00,
 }

@@ -26,6 +26,23 @@ message RegionRecover {
     bool tombstone = 4; // 将这个副本设置为 tombstone
 }
 
+message CloseRequest {
+    bool workdone = 1;
+}
+
+message CloseReply {
+    string ok = 1;
+}
+
+message ResolvedRequest {
+    uint64 start = 1;
+}
+
+message ResolvedReply {
+    uint64 resolved_ts = 1;
+}
 service Phybr {
     rpc recover_regions(stream RegionMeta) returns (stream RegionRecover) {}
+    rpc close(CloseRequest) returns (CloseReply) {}
+    rpc resolve(ResolvedRequest) returns (ResolvedReply) {}
 }
