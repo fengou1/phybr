@@ -78,7 +78,7 @@ func (x X) Close(ctx context.Context, in *pb.CloseRequest) (*pb.CloseReply, erro
 }
 
 func (x X) Resolve(ctx context.Context, in *pb.ResolvedRequest) (*pb.ResolvedReply, error) {
-	return &pb.ResolvedReply{ResolvedTs: 542462374256426}, nil
+	return &pb.ResolvedReply{ResolvedTs: 431656330251468803}, nil
 }
 
 func main() {
